@@ -1,0 +1,50 @@
+\begin{thebibliography}{6}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Barab{\'a}si(2016)]{barabasi}
+Albert-L{\'a}szl{\'o} Barab{\'a}si.
+\newblock \emph{Network science}.
+\newblock Cambridge University Press, 2016.
+
+\bibitem[Collins et~al.(2007)Collins, Kemmeren, Zhao, Greenblatt, Spencer,
+  Holstege, Weissman, and Krogan]{apms_data}
+Sean~R Collins, Patrick Kemmeren, Xue-Chu Zhao, Jack~F Greenblatt, Forrest
+  Spencer, Frank~CP Holstege, Jonathan~S Weissman, and Nevan~J Krogan.
+\newblock Toward a comprehensive atlas of the physical interactome of
+  saccharomyces cerevisiae.
+\newblock \emph{Molecular \& Cellular Proteomics}, 6\penalty0 (3):\penalty0
+  439--450, 2007.
+
+\bibitem[Newman(2010)]{newman}
+Mark Newman.
+\newblock \emph{Networks: an introduction}.
+\newblock Oxford university press, 2010.
+
+\bibitem[Newman(2003)]{newman2003}
+Mark~EJ Newman.
+\newblock Mixing patterns in networks.
+\newblock \emph{Physical Review E}, 67\penalty0 (2):\penalty0 026126, 2003.
+
+\bibitem[Reguly et~al.(2006)Reguly, Breitkreutz, Boucher, Breitkreutz, Hon,
+  Myers, Parsons, Friesen, Oughtred, Tong, et~al.]{lit_data}
+Teresa Reguly, Ashton Breitkreutz, Lorrie Boucher, Bobby-Joe Breitkreutz,
+  Gary~C Hon, Chad~L Myers, Ainslie Parsons, Helena Friesen, Rose Oughtred, Amy
+  Tong, et~al.
+\newblock Comprehensive curation and analysis of global interaction networks in
+  saccharomyces cerevisiae.
+\newblock \emph{Journal of biology}, 5\penalty0 (4):\penalty0 1, 2006.
+
+\bibitem[Yu et~al.(2008)Yu, Braun, Y{\i}ld{\i}r{\i}m, Lemmens, Venkatesan,
+  Sahalie, Hirozane-Kishikawa, Gebreab, Li, Simonis, et~al.]{y2h_data}
+Haiyuan Yu, Pascal Braun, Muhammed~A Y{\i}ld{\i}r{\i}m, Irma Lemmens, Kavitha
+  Venkatesan, Julie Sahalie, Tomoko Hirozane-Kishikawa, Fana Gebreab, Na~Li,
+  Nicolas Simonis, et~al.
+\newblock High-quality binary protein interaction map of the yeast interactome
+  network.
+\newblock \emph{Science}, 322\penalty0 (5898):\penalty0 104--110, 2008.
+
+\end{thebibliography}

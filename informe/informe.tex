@@ -1,0 +1,53 @@
+\documentclass[11pt, spanish]{article}
+\usepackage[spanish]{babel}
+\selectlanguage{spanish}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{tabularx}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{authblk}
+\usepackage{natbib}
+\usepackage{multirow}
+
+
+\captionsetup[table]{name=Tabla}
+\renewcommand{\thetable}{\Roman{table}}
+\newcommand{\mean}[1]{\left\langle#1\right\rangle}
+%\newcommand{\eqref}[1]{Ec.~\ref{#1}}
+
+\begin{document}
+\begin{titlepage}
+    \centering
+    {\scshape\LARGE Universidad de Buenos Aires \par}
+    \vspace{1cm}
+    {\scshape\Large Informe 2:\par}
+
+    \vspace{1.5cm}
+    {\scshape\Large\par}
+    {\huge\bfseries  Lethalily-Centrality Rule\par}
+    \vspace{2cm}
+    {\Large\itshape Ra\'ul Barriga\par}
+    {\Large\itshape Mariela Celis\par}
+    {\Large\itshape Jimmy Mas\'ias\par}
+    {\Large\itshape Sebast\'ian Pinto\par}
+
+    \vfill
+
+    \vfill
+
+                                                    % Bottom of the page
+    {\large \today\par}
+\end{titlepage}
+
+    %--- tabla de contenidos
+    \tableofcontents
+
+    \input{intro}
+
+
+
+\bibliographystyle{plainnat}
+\bibliography{biblio}
+\end{document}
