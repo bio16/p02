@@ -6,6 +6,8 @@ import random as rand
 
 graph = igraph.Graph.Read_Ncol('yeast_AP-MS.txt', directed=False)
 
+"""
+
 number_of_nodes = len(graph.vs)
 nodes_to_remove = int(0.35 * number_of_nodes)
 
@@ -134,5 +136,6 @@ plt.grid('on')
 plt.xlabel('Fraction of nodes')
 plt.ylabel('Largest connected component')
 plt.show()
+"""
 
 
