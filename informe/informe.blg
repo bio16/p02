@@ -3,44 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: informe.aux
 The style file: plainnat.bst
 Database file #1: biblio.bib
-You've used 6 entries,
+Warning--can't use both volume and number fields in faloutsos1999
+You've used 9 entries,
             2773 wiz_defined-function locations,
-            634 strings with 6104 characters,
-and the built_in function-call counts, 3467 in all, are:
-= -- 266
-> -- 307
+            659 strings with 7282 characters,
+and the built_in function-call counts, 6523 in all, are:
+= -- 525
+> -- 617
 < -- 3
-+ -- 105
-- -- 99
-* -- 318
-:= -- 576
-add.period$ -- 18
-call.type$ -- 6
-change.case$ -- 47
-chr.to.int$ -- 6
-cite$ -- 12
-duplicate$ -- 123
-empty$ -- 221
-format.name$ -- 105
-if$ -- 684
++ -- 207
+- -- 198
+* -- 648
+:= -- 1052
+add.period$ -- 28
+call.type$ -- 9
+change.case$ -- 89
+chr.to.int$ -- 9
+cite$ -- 19
+duplicate$ -- 200
+empty$ -- 373
+format.name$ -- 209
+if$ -- 1301
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 8
-newline$ -- 38
-num.names$ -- 24
-pop$ -- 99
+missing$ -- 9
+newline$ -- 53
+num.names$ -- 36
+pop$ -- 163
 preamble$ -- 1
-purify$ -- 43
+purify$ -- 80
 quote$ -- 0
-skip$ -- 104
+skip$ -- 189
 stack$ -- 0
-substring$ -- 83
-swap$ -- 6
-text.length$ -- 0
+substring$ -- 211
+swap$ -- 21
+text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 56
-warning$ -- 0
-while$ -- 24
+type$ -- 99
+warning$ -- 1
+while$ -- 43
 width$ -- 0
-write$ -- 83
+write$ -- 126
+(There was 1 warning)
