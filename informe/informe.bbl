@@ -1,14 +1,9 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{9}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
-
-\bibitem[Barab{\'a}si(2016)]{barabasi}
-Albert-L{\'a}szl{\'o} Barab{\'a}si.
-\newblock \emph{Network science}.
-\newblock Cambridge University Press, 2016.
 
 \bibitem[Collins et~al.(2007)Collins, Kemmeren, Zhao, Greenblatt, Spencer,
   Holstege, Weissman, and Krogan]{apms_data}
@@ -19,15 +14,33 @@ Sean~R Collins, Patrick Kemmeren, Xue-Chu Zhao, Jack~F Greenblatt, Forrest
 \newblock \emph{Molecular \& Cellular Proteomics}, 6\penalty0 (3):\penalty0
   439--450, 2007.
 
-\bibitem[Newman(2010)]{newman}
-Mark Newman.
-\newblock \emph{Networks: an introduction}.
-\newblock Oxford university press, 2010.
+\bibitem[Faloutsos et~al.(1999)Faloutsos, Faloutsos, and
+  Faloutsos]{faloutsos1999}
+Michalis Faloutsos, Petros Faloutsos, and Christos Faloutsos.
+\newblock On power-law relationships of the internet topology.
+\newblock In \emph{ACM SIGCOMM computer communication review}, volume~29, pages
+  251--262. ACM, 1999.
 
-\bibitem[Newman(2003)]{newman2003}
-Mark~EJ Newman.
-\newblock Mixing patterns in networks.
-\newblock \emph{Physical Review E}, 67\penalty0 (2):\penalty0 026126, 2003.
+\bibitem[He and Zhang(2006)]{he2006}
+Xionglei He and Jianzhi Zhang.
+\newblock Why do hubs tend to be essential in protein networks?
+\newblock \emph{PLoS Genet}, 2\penalty0 (6):\penalty0 e88, 2006.
+
+\bibitem[Jeong et~al.(2000)Jeong, Tombor, Albert, Oltvai, and
+  Barab{\'a}si]{jeong2000}
+Hawoong Jeong, B{\'a}lint Tombor, R{\'e}ka Albert, Zoltan~N Oltvai, and A-L
+  Barab{\'a}si.
+\newblock The large-scale organization of metabolic networks.
+\newblock \emph{Nature}, 407\penalty0 (6804):\penalty0 651--654, 2000.
+
+\bibitem[Kamath et~al.(2003)Kamath, Fraser, Dong, Poulin, Durbin, Gotta,
+  Kanapin, Le~Bot, Moreno, Sohrmann, et~al.]{kamath2003}
+Ravi~S Kamath, Andrew~G Fraser, Yan Dong, Gino Poulin, Richard Durbin, Monica
+  Gotta, Alexander Kanapin, Nathalie Le~Bot, Sergio Moreno, Marc Sohrmann,
+  et~al.
+\newblock Systematic functional analysis of the caenorhabditis elegans genome
+  using rnai.
+\newblock \emph{Nature}, 421\penalty0 (6920):\penalty0 231--237, 2003.
 
 \bibitem[Reguly et~al.(2006)Reguly, Breitkreutz, Boucher, Breitkreutz, Hon,
   Myers, Parsons, Friesen, Oughtred, Tong, et~al.]{lit_data}
@@ -38,6 +51,15 @@ Teresa Reguly, Ashton Breitkreutz, Lorrie Boucher, Bobby-Joe Breitkreutz,
   saccharomyces cerevisiae.
 \newblock \emph{Journal of biology}, 5\penalty0 (4):\penalty0 1, 2006.
 
+\bibitem[Winzeler et~al.(1999)Winzeler, Shoemaker, Astromoff, Liang, Anderson,
+  Andre, Bangham, Benito, Boeke, Bussey, et~al.]{winzeler1999}
+Elizabeth~A Winzeler, Daniel~D Shoemaker, Anna Astromoff, Hong Liang, Keith
+  Anderson, Bruno Andre, Rhonda Bangham, Rocio Benito, Jef~D Boeke, Howard
+  Bussey, et~al.
+\newblock Functional characterization of the s. cerevisiae genome by gene
+  deletion and parallel analysis.
+\newblock \emph{science}, 285\penalty0 (5429):\penalty0 901--906, 1999.
+
 \bibitem[Yu et~al.(2008)Yu, Braun, Y{\i}ld{\i}r{\i}m, Lemmens, Venkatesan,
   Sahalie, Hirozane-Kishikawa, Gebreab, Li, Simonis, et~al.]{y2h_data}
 Haiyuan Yu, Pascal Braun, Muhammed~A Y{\i}ld{\i}r{\i}m, Irma Lemmens, Kavitha
@@ -46,5 +68,13 @@ Haiyuan Yu, Pascal Braun, Muhammed~A Y{\i}ld{\i}r{\i}m, Irma Lemmens, Kavitha
 \newblock High-quality binary protein interaction map of the yeast interactome
   network.
 \newblock \emph{Science}, 322\penalty0 (5898):\penalty0 104--110, 2008.
+
+\bibitem[Zotenko et~al.(2008)Zotenko, Mestre, O'Leary, and
+  Przytycka]{zotenko2008}
+Elena Zotenko, Julian Mestre, Dianne~P O'Leary, and Teresa~M Przytycka.
+\newblock Why do hubs in the yeast protein interaction network tend to be
+  essential: reexamining the connection between the network topology and
+  essentiality.
+\newblock \emph{PLoS Comput Biol}, 4\penalty0 (8):\penalty0 e1000140, 2008.
 
 \end{thebibliography}
