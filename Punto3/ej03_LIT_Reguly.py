@@ -7,12 +7,12 @@ import networkx as nx
 
 # --- Cargo el grafo con igraph ---- #
 
-graph = igraph.Graph.Read_Ncol('yeast_LIT.txt', directed=False)
+graph = igraph.Graph.Read_Ncol('yeast_LIT_Reguly_interactions.txt', directed=False)
 graph.simplify(multiple = True, loops = False)
 
 # ---- Cargo con Networkx para calcular algunos observables --- #
 
-graph_nx = nx.read_edgelist('yeast_LIT.txt', create_using = nx.Graph())
+graph_nx = nx.read_edgelist('yeast_LIT_Reguly_interactions.txt', create_using = nx.Graph())
 
 
 
@@ -300,18 +300,18 @@ plt.plot(fraction_of_nodes, size_max_component, label = 'Random', linewidth = 2)
 plt.figure(1)
 plt.axis([0, 0.50, 0, 1.00])
 plt.legend()
-plt.title('LIT network')
+plt.title('LIT Reguly network')
 plt.grid('on')
 plt.xlabel('Fraction of nodes')
 plt.ylabel('Largest connected component')
-plt.savefig('LIT.eps')
+plt.savefig('LIT_Reguly.eps')
 
 plt.figure(2)
 plt.axis([0, 0.50, 0, 1.00])
 plt.legend()
-plt.title('LIT network')
+plt.title('LIT Reguly network')
 plt.grid('on')
 plt.xlabel('Fraction of nodes')
 plt.ylabel('Largest connected component')
-plt.savefig('LIT_b.eps')
+plt.savefig('LIT_Reguly_b.eps')
 
