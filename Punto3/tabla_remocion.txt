@@ -1,0 +1,5 @@
+#Network Size_max_ by_rem._ess Ess_rem. Size_max_by_rem_non_ess error
+AP-MS 0.32 615 0.38 0.02
+LIT 0.276 636 0.417 0.003 
+Y2H 0.62 459 0.61 0.01
+LIT_Reguly 0.568 903 0.536 0.005
