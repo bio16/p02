@@ -2,3 +2,5 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Introducci\'on}{2}
 \contentsline {section}{\numberline {2}Caracterizaci\'on}{3}
+\contentsline {section}{\numberline {3}Impacto de remoci\IeC {\'o}n.}{5}
+\contentsline {subsection}{\numberline {3.1}Remoci\IeC {\'o}n de nodos al azar.}{5}
