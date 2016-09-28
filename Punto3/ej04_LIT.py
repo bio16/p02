@@ -28,9 +28,8 @@ for vs in graph.vs:
             vs['essential'] = 1
             essentials_in_graph.append(vs['name'])
 
-print len(essentials_in_graph)
-print len(set(essentials_in_graph))
-exit()
+essentials_in_graph = list(set(essentials_in_graph))
+
 # ----------- Remuevo esenciales ---------- #
 
 graph_aux = deepcopy(graph)
@@ -47,40 +46,52 @@ print 'Nodos removidos:', len(essentials_in_graph)
 
 # ------- Remuevo no esenciales con el mismo grado ------- #
 
+# Hago una lista con los grados de los esenciales
 degree_of_essentials = [vs.degree() for vs in graph.vs if vs['essential'] == 1]
-print len(degree_of_essentials)
-degree_of_non_essentials = [vs.degree() for vs in graph.vs if vs['essential'] == 0]
 
 data = []
-nodes_removed = 0
+nodes_removed = np.zeros(1)
 for i in range(1):
 
+    # Creo una copia del grafo
     graph_aux = deepcopy(graph)
 
+    # Mezclo esta lista para no recorrerlos en orden 
     rand.shuffle(degree_of_essentials)
 
+    # Recorro los grados de los esenciales
     for degree in degree_of_essentials:
 
-        degree_of_non_essentials = [vs.degree() for vs in graph_aux.vs if vs['essential'] == 0]
+        # Genero un diccionario de (proteina, grado original) con las 
+        # no esenciales presentes en la red auxiliar, 
+        # pero tomando el grado que tenian en la red original
+        non_essentials = {}
+        for vs in graph.vs:
+            if vs['essential'] == 0 and vs['name'] in [vs_aux['name'] for vs_aux in graph_aux.vs]:
+                non_essentials[vs['name']] = vs.degree()
 
-        vs_name = rand.choice([vs['name'] for vs in graph_aux.vs \
-                   if vs.degree() == min(degree_of_non_essentials, key = lambda x: abs(x - degree)) \
-                   and vs['essential'] == 0])
+        non_essentials = non_essentials.items()
+
+        degree_of_non_essentials = [item[1] for item in non_essentials]
+
+        # Genero una lista de nodos posibles a remover, 
+        # tomando aquellos con el grado mas cercano a la esencial
+        vertexs2remove = [item[0] for item in non_essentials \
+                          if item[1] == min(degree_of_non_essentials, key = lambda x: abs(x-degree))]
+
+        vs_name = rand.choice(vertexs2remove)
 
         graph_aux.delete_vertices(vs_name)
-        nodes_removed += 1
+        nodes_removed[i] += 1
             
-        
     graph_aux2 = graph_aux.clusters()
     size_max_component = float(max(graph_aux2.sizes())) \
                          / size_of_large_connected_component
     
+    data.append(size_max_component)
 
-print size_max_component, nodes_removed
-#    data.append(size_max_component)
-
-#print np.mean(data), np.std(data)
-#print 'Nodos no esenciales removidos: ', np.mean(nodes_removed), np.std(nodes_removed)
+print np.mean(data), np.std(data)
+print 'Nodos no esenciales removidos: ', np.mean(nodes_removed), np.std(nodes_removed)
 
 
 
