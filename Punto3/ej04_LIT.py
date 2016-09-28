@@ -28,6 +28,9 @@ for vs in graph.vs:
             vs['essential'] = 1
             essentials_in_graph.append(vs['name'])
 
+print len(essentials_in_graph)
+print len(set(essentials_in_graph))
+exit()
 # ----------- Remuevo esenciales ---------- #
 
 graph_aux = deepcopy(graph)
@@ -45,40 +48,39 @@ print 'Nodos removidos:', len(essentials_in_graph)
 # ------- Remuevo no esenciales con el mismo grado ------- #
 
 degree_of_essentials = [vs.degree() for vs in graph.vs if vs['essential'] == 1]
-
-# Margen para considerar que dos nodos tienen el mismo grado
-delta = 5
-same_degree_non_essentials = [[vs['name'] for vs in graph.vs \
-                               if vs.degree() <=  (degree + delta) or vs.degree > (degree - delta) \
-                               and vs['essential'] == 0] for degree in degree_of_essentials]
+print len(degree_of_essentials)
+degree_of_non_essentials = [vs.degree() for vs in graph.vs if vs['essential'] == 0]
 
 data = []
-nodes_removed = np.zeros(50)
-for i in range(50):
+nodes_removed = 0
+for i in range(1):
 
     graph_aux = deepcopy(graph)
 
-    for vertexs in same_degree_non_essentials:
+    rand.shuffle(degree_of_essentials)
 
-        if vertexs == []:
-            continue
-        else:
-            rand.shuffle(vertexs)
-            for vs in vertexs:
-                try:
-                    graph_aux.delete_vertices(vs)
-                    nodes_removed[i] += 1
-                    break
-                except:
-                    pass
+    for degree in degree_of_essentials:
+
+        degree_of_non_essentials = [vs.degree() for vs in graph_aux.vs if vs['essential'] == 0]
+
+        vs_name = rand.choice([vs['name'] for vs in graph_aux.vs \
+                   if vs.degree() == min(degree_of_non_essentials, key = lambda x: abs(x - degree)) \
+                   and vs['essential'] == 0])
+
+        graph_aux.delete_vertices(vs_name)
+        nodes_removed += 1
+            
+        
     graph_aux2 = graph_aux.clusters()
     size_max_component = float(max(graph_aux2.sizes())) \
                          / size_of_large_connected_component
     
-    data.append(size_max_component)
 
-print np.mean(data), np.std(data)
-print 'Nodos no esenciales removidos: ', np.mean(nodes_removed), np.std(nodes_removed)
+print size_max_component, nodes_removed
+#    data.append(size_max_component)
+
+#print np.mean(data), np.std(data)
+#print 'Nodos no esenciales removidos: ', np.mean(nodes_removed), np.std(nodes_removed)
 
 
 
