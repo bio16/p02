@@ -32,7 +32,6 @@
 \par En la tabla \ref{table:remocion}, comparamos el impacto de remover los nodos esenciales con la remoción de nodos no esenciales, con distribución de grado equivalente. El criterio tomado consistió en, dado un nodo esencial, tomar uno no esencial con el grado más cercano posible.
 \begin{table}
 \centering
-\label{table:remocion}
 \begin{tabular}{c c c c}
 \hline \hline
 Red & Tr(Esenc.) & Tr(No Esenc.) & Nodos removidos \\
@@ -44,7 +43,7 @@ LIT-Reguly & 0.568 & $0.536 \pm 0.005$ & 903 \\
 \hline\hline
 \end{tabular}
 \caption{Tamaño relativo de la componente conectada más grande al remover proteínas esenciales, y nodos no esenciales con distribución de grado equivalente.}
-
+\label{table:remocion}
 \end{table}
 \par De la tabla podemos concluir que en las redes Y2H y LIT-Reguly, el impacto de remoción es prácticamente el mismo que remover nodos no esenciales con la misma distribución de grado, e incluso el impacto es levemente mayor para la segunda red. Sin embargo, para las redes restantes, y con mayor notoriedad en la red LIT, la remoción de las proteínas esenciales es más dañina que la remoción de nodos al azar. Si observamos la figura \ref{fig:remocion} para la red LIT, la remoción de nodos al azar sin ningún criterio es prácticamente igual a remover los esenciales. Cabe destacar que en la construcción de la figura \ref{fig:remocion} al tomar nodos al azar se incluyeron a las proteínas esenciales, lo cual, la tabla podría indicar que en esta red algunas proteínas esenciales cumplen algún rol de centralidad.
 \par Del estudio de impacto de remoción concluímos entonces, que ciertas proteínas no son esenciales exclusivamente por su rol topológico en la red, debido a que remover aquellos nodos que cumplen cierto grado de centralidad es siempre más dañino para la red que la remoción de las catalogadas como esenciales. Incluso en algunas de las redes, el impacto de remover nodos al azar es equivalente a la remoción de las esenciales.
