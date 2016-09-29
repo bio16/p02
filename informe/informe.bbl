@@ -1,4 +1,4 @@
-\begin{thebibliography}{11}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -42,6 +42,17 @@ Ravi~S Kamath, Andrew~G Fraser, Yan Dong, Gino Poulin, Richard Durbin, Monica
   using rnai.
 \newblock \emph{Nature}, 421\penalty0 (6920):\penalty0 231--237, 2003.
 
+\bibitem[Pereira-Leal et~al.(2005)Pereira-Leal, Audit, Peregrin-Alvarez, and
+  Ouzounis]{pereira05}
+José~B. Pereira-Leal, Benjamin Audit, José~M. Peregrin-Alvarez, and
+  Christos~A. Ouzounis.
+\newblock An exponential core in the heart of the yeast protein interaction
+  network.
+\newblock \emph{Molecular Biology and Evolution}, 22\penalty0 (3):\penalty0
+  421--425, 2005.
+\newblock \doi{10.1093/molbev/msi024}.
+\newblock URL \url{http://mbe.oxfordjournals.org/content/22/3/421.abstract}.
+
 \bibitem[Reguly et~al.(2006)Reguly, Breitkreutz, Boucher, Breitkreutz, Hon,
   Myers, Parsons, Friesen, Oughtred, Tong, et~al.]{lit_data}
 Teresa Reguly, Ashton Breitkreutz, Lorrie Boucher, Bobby-Joe Breitkreutz,
@@ -59,16 +70,6 @@ Elizabeth~A Winzeler, Daniel~D Shoemaker, Anna Astromoff, Hong Liang, Keith
 \newblock Functional characterization of the s. cerevisiae genome by gene
   deletion and parallel analysis.
 \newblock \emph{science}, 285\penalty0 (5429):\penalty0 901--906, 1999.
-
-\bibitem[Wuchty(2002)]{wuchty2002}
-Stefan Wuchty.
-\newblock Interaction and domain networks of yeast.
-\newblock \emph{Proteomics}, 2\penalty0 (12):\penalty0 1715--1723, 2002.
-
-\bibitem[Yu et~al.(2004)Yu, Greenbaum, Lu, Zhu, and Gerstein]{yu2004}
-Haiyuan Yu, Dov Greenbaum, Hao~Xin Lu, Xiaowei Zhu, and Mark Gerstein.
-\newblock Genomic analysis of essentiality within protein networks.
-\newblock \emph{TRENDS in Genetics}, 20\penalty0 (6):\penalty0 227--231, 2004.
 
 \bibitem[Yu et~al.(2008)Yu, Braun, Y{\i}ld{\i}r{\i}m, Lemmens, Venkatesan,
   Sahalie, Hirozane-Kishikawa, Gebreab, Li, Simonis, et~al.]{y2h_data}

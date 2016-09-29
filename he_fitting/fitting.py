@@ -158,8 +158,6 @@ fig,subplot = plt.subplots(ncols=1,nrows=1)
 
 
 
-
-#subplot.plot(all_degrees,np.log(1 - all_degrees_essential_hist/all_degrees_hist),'o')
 color = args.data_color
 subplot.plot(log_bin_centers,np.log(non_essential_probability_by_degree),'o',
         color=color, label = 'data')
@@ -170,8 +168,9 @@ x = np.linspace(xmin,xmax,10)
 y = lin(x,result.params['slope'].value,result.params['intercept'].value)
 subplot.plot(x,y,'k--',label='fit')
 
-subplot.set_xlabel('$k$')
-subplot.set_ylabel('$\log(1-P_E)$')
+subplot.set_xlabel('$k$',fontsize=20)
+subplot.set_ylabel('$\log(1-P_E)$',fontsize=20)
+subplot.tick_params(labelsize=20)
 plt.savefig('./schemes/'+filename+'.pdf')
 plt.show()
 

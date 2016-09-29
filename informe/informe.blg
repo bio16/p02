@@ -1,46 +1,47 @@
 This is BibTeX, Version 0.99d (TeX Live 2015/Arch Linux)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: informe.aux
+A level-1 auxiliary file: simulacion.aux
 The style file: plainnat.bst
 Database file #1: biblio.bib
-You've used 11 entries,
+You've used 10 entries,
             2773 wiz_defined-function locations,
-            675 strings with 7564 characters,
-and the built_in function-call counts, 7533 in all, are:
-= -- 617
-> -- 675
-< -- 4
-+ -- 227
-- -- 216
-* -- 736
-:= -- 1208
-add.period$ -- 34
-call.type$ -- 11
-change.case$ -- 101
-chr.to.int$ -- 11
-cite$ -- 22
-duplicate$ -- 241
-empty$ -- 456
-format.name$ -- 229
-if$ -- 1509
+            669 strings with 7597 characters,
+and the built_in function-call counts, 7092 in all, are:
+= -- 577
+> -- 656
+< -- 3
++ -- 220
+- -- 210
+* -- 702
+:= -- 1143
+add.period$ -- 33
+call.type$ -- 10
+change.case$ -- 96
+chr.to.int$ -- 10
+cite$ -- 20
+duplicate$ -- 221
+empty$ -- 414
+format.name$ -- 222
+if$ -- 1420
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 11
-newline$ -- 63
-num.names$ -- 44
-pop$ -- 185
+missing$ -- 10
+newline$ -- 60
+num.names$ -- 40
+pop$ -- 174
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 86
 quote$ -- 0
-skip$ -- 219
+skip$ -- 205
 stack$ -- 0
-substring$ -- 271
-swap$ -- 22
+substring$ -- 234
+swap$ -- 21
 text.length$ -- 2
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 121
+type$ -- 110
 warning$ -- 0
-while$ -- 53
+while$ -- 47
 width$ -- 0
-write$ -- 152
+write$ -- 143

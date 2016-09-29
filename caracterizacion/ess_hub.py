@@ -134,8 +134,9 @@ for file in args.files:  #para cada red
 
     print("%25s: %.2f(%g)\t%.2f(%.2g)\t%3i"%(name,tau,tp_value,rho,rp_value,kcut))
 
-subplot.set_xlabel('Fraccion de hubs en la red')
-subplot.set_ylabel('Fraccion de hubs esenciales')
+subplot.set_xlabel('Fraccion de hubs en la red',fontsize=20)
+subplot.set_ylabel('Fraccion de hubs esenciales',fontsize=20)
+subplot.tick_params(labelsize=20)
 subplot.legend(loc='best')
 plt.savefig('ess_hub.pdf')
 plt.show()
