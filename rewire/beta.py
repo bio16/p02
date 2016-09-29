@@ -18,16 +18,22 @@ parser = argparse.ArgumentParser(
 formatter_class=argparse.ArgumentDefaultsHelpFormatter
 )
 parser.add_argument(
-'-fig', '--fname_fig',
+'-inp_txt', '--fname_inp_txt',
 type=str,
-default='./test.png',
-help='figure filename',
+default='../data/yeast_LIT.txt',
+help='ASCII input',
+)
+parser.add_argument(
+'-inp_h5', '--fname_inp_h5',
+type=str,
+default='./LIT.h5',
+help='HDF5 input',
 )
 pa = parser.parse_args()
 
 
 # ------- Cargo la informacion del problema ------------- #
-fname_graph = '../data/yeast_LIT.txt'
+fname_graph = pa.fname_inp_txt #'../data/yeast_LIT.txt'
 fname_ess   = '../data/Essential_ORFs_paperHe.txt'
 
 
@@ -39,7 +45,7 @@ n_edges = len(graph.es) # nro total de enlaces
 
 
 #--- leamos los fiteos de la distribucion de IBEPs
-with h5('./test.h5', 'r') as f:
+with h5(pa.fname_inp_h5, 'r') as f:
     #fit_A  = f['fit/A'].value
     fit_mu = f['fit/mu'].value   # valor medio
     fit_sigma = f['fit/sigma'].value  # sigma de la gaussiana

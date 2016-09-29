@@ -15,7 +15,7 @@ se deba a q la generacion de nro aleatorio entra en un periodo de ciclo?
 ---
 Hallar los parametros de fiteo de la distribucion del nro de interacc esenciales.
 ```bash
-./fitear.py  ## anexa la informacion en el archivo `./test.h5`
+./fitear.py -- -inp ./LIT.h5  ## anexa la informacion en el archivo `./test.h5`
 ```
 
 
@@ -28,5 +28,5 @@ A partir de estas realizaciones de red, se deduce un beta promedio (y su error),
 como tambien la fraccion de overlapping (por intentos de asignar esencialidad a nodos
 q ya eran esenciales).
 ```bash
-./beta.py
+./beta.py -- 
 ```
