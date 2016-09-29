@@ -2,8 +2,11 @@
 \select@language {spanish}
 \contentsline {section}{\numberline {1}Introducci\'on}{2}
 \contentsline {section}{\numberline {2}Caracterizaci\'on}{3}
-\contentsline {section}{\numberline {3}Regla de Centralidad-Letalidad}{4}
+\contentsline {section}{\numberline {3}Regla de Centralidad-Letalidad \citep {jeong2000}}{4}
 \contentsline {subsection}{\numberline {3.1}Cumplimiento de la regla}{5}
-\contentsline {section}{\numberline {4}Impacto de remoci\IeC {\'o}n.}{6}
-\contentsline {subsection}{\numberline {4.1}Remoci\IeC {\'o}n de nodos al azar.}{7}
-\contentsline {section}{\numberline {5}He}{9}
+\contentsline {subsection}{\numberline {3.2}Impacto de remoci\IeC {\'o}n.}{7}
+\contentsline {subsubsection}{\numberline {3.2.1}Remoci\IeC {\'o}n de nodos al azar.}{7}
+\contentsline {section}{\numberline {4}Hip\'otesis de interacciones esenciales~\citep {he2006}}{10}
+\contentsline {subsection}{\numberline {4.1}M\'etodo de Ajuste}{11}
+\contentsline {subsection}{\numberline {4.2}M\'etodo de simulaciones}{12}
+\contentsline {subsection}{\numberline {4.3}Discuci\'on}{12}
