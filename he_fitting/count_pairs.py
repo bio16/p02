@@ -96,38 +96,33 @@ def F(x,y,threshold=3):
 A = args.alpha
 B = args.beta
 
+
 def P(k,alpha=A,beta=B):
     return 1 - (1-beta)*(1-alpha)**k
 
 
 
-adj = gp.adjacency(graph).toarray()
+adj = gp.adjacency(graph).toarray() # matriz de adyacencia
 N = graph.num_vertices()
 
 one = np.ones_like(adj)
-
-
-disjoin = one - adj
+disjoin = one - adj                 # matriz de no-vecinos
 
 pairs = 0
 sameType_pairs = 0
 expected_pairs = 0
 for i in range(N):
-    for j in range(i+1,N):
-        if disjoin[i,j] and F(adj[i,:],adj[j,:],args.threshold):
+    for j in range(i+1,N):                                          # Suma sobre j>i
+        if disjoin[i,j] and F(adj[i,:],adj[j,:],args.threshold):    # si no es vecino y cumple F es un par que nos interesa
             pairs += 1
-            if graph.vp.essential[i] == graph.vp.essential[j]:
+            if graph.vp.essential[i] == graph.vp.essential[j]:      # si son de igual tipo contarlos tambien en sameType_pairs
                 sameType_pairs += 1
-            if A and B:
-                ki = v_degrees[i]
-                kj = v_degrees[j]
+            if A and B:                         # si le damos un par de probabilidades alpha y beta
+                ki = v_degrees[i]               # estima el numero de nodos de igual tipo
+                kj = v_degrees[j]               # a traves de la probabilidad 
                 expected_pairs += P(kj)*P(ki) + (1-P(kj))*(1-P(ki))
-#for i,arri in enumerate(adj):
-#    for j, arrj in enumerate(adj):
-#        if i != j and graph.vp.essential[i] == graph.vp.essential[j] and F(arri,arrj) and (1-arri[j]):
-#            pairs += 1
 
-print('pairs',pairs)
-print('same type pairs',sameType_pairs)
+print('pairs',pairs)                            # Reporta numero total de pares
+print('same type pairs',sameType_pairs)         # Reportan numero de pares de igual tipo
 if A and B:
-    print('expected pairs',expected_pairs)
+    print('expected pairs',expected_pairs)      # Reporta estimacion de pares de igual tipo dado alpha y beta
