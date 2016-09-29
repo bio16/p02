@@ -17,10 +17,22 @@ Esta caracter\'istica nos permite estimar el n\'umero de PPIs esenciales en una 
 Dado el n\'umero total de interacciones IBEPs $N_{ie}$ para cada red, generamos una red de control haciendo un recableado de los enlaces, manteniendo la distribuci\'on de grado $P(k)$ para cada nodo.
 Repitiendo este procedimiento 5000 veces (1000 para la red {\it Y2H}), obtenemos la distribuci\'on del n\'umero ($n_{ie}$) de enlaces esenciales (IBEPs) en redes recableadas al azar.
 En todos los caso, el m\'aximo valores de la distribuci\'on no supera el caso de la red real; es decir, $max(n_{ie}) < N_{ie}$ siempre.
-Este exceso del caso real tambi\'en se observa en otros casos de PPIs de levadura y en PPIs de nematodos {\bf CITAR 14 y 15, ver p. 2}.
+Este exceso del caso real tambi\'en se observa en otros casos de PPIs de levadura y en PPIs de nematodos \cite{pereira05}.
 
-Siguiendo el m\'etodo de \cite{he2006}, determinamos la fracci\'on de interacciones esenciales PPI como $\alpha = (N_{ie} - <n_{ie}>)/(N_{nod})$, siendo $N_{tot}$ el n\'umero total de nodos de la red.
+Siguiendo el m\'etodo de \cite{he2006}, asumimos que el exceso de IBEPs de debe enteramente a la presencia de PPIs, por lo cual estimamos $\alpha = (N_{ie} - <n_{ie}>)/(N_{nod})$, siendo $N_{tot}$ el n\'umero total de nodos de la red.
 Los valores para las diferentes redes se muestran en la tabla \ref{tab:probas}.
+
+%--- calculo del beta
+Adem\'as de de las interacciones esenciales PPIs, hay otros factores (e.g. interacciones proteina-ADN) que puede contribuir para q un nodo sea esencial.
+Para estimar la probalidad $\beta$ asociado a estos otros factores, primero removemos la informaci\'on de esencialidad en todos los nodos y enlaces.
+
+Luego, asignamos $N_{ie} - n_{ie}$ enlaces esenciales al azar a la red, donde $n_{ie}$ es un n\'umero aleatorio q se deduce de su distribuci\'on de probabilidad (ver Figura \ref{fig:hist_simulaciones}).
+Notar que $N_{ie}-n_{ie}$ es el n\'umero estimado de enlaces esenciales.
+Luego etiquetamos esencialidad en los nodos q est\'en conectados a estos enlaces.
+
+Despu\'es, imitamos el efecto de esencialidad debido a otros factores marcando esencialidad en nodos al azar, hasta que se completen $N_e$ nodos esenciales en la red.
+Notar que hay nodos q se etiquetaron esenciales por ambos motivos, por PPI y por azar.
+Repitiendo este procedimiento $10000$ veces, encontramos los valores de probabilidad repotados en la tabla \ref{tab:probas}.
 
 
 %--- overlapping
@@ -34,7 +46,7 @@ En particular, para el caso {\it Y2H} es del $22 \pm 6$ \%, y para {\it LIT} es 
 \includegraphics[scale = 0.6]{figuras/hist_LIT.png} 
 \includegraphics[scale = 0.6]{figuras/hist_Y2H.png} \\
 \caption{Distribuciones observadas del n\'umero de interacciones esenciales para los casos random de la redes estudiadas mediante simulaciones, para investigar las probabilidad $\alpha$ y $\beta$ de la red.}
-\label{fig:remocion_alternativo}
+\label{fig:hist_simulaciones}
 \end{figure}
 
 %EO
