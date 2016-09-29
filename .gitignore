@@ -4,3 +4,7 @@
 *.bak
 
 data/tc02Data.zip
+*.pyc
+*.h5
+
+#EOF

@@ -1,14 +1,12 @@
 #!/usr/bin/env ipython 
 # -*- coding: utf-8 -*-
 
-# Uso la librería igraph y pandas.
 import igraph, argparse
 import pandas as pd
 import random
 import matplotlib.pyplot as plt
 import numpy as np
 from pylab import figure, close, show, find, bar, hist
-#from h5py import File as h5
 
 
 #--- retrieve args
@@ -94,10 +92,14 @@ for i in range(n_rewire):
     #graph.rewire(int(n_nodes/2)) # recablear tantas veces como la mitad
                                  # del nro total de nodos
 
-#fo = h5('./test.h5', 'w')
-#fo['ne'] = np.array(ne_, dtype=np.int32)
-#fo['n_rewire'] = n_rewire
-#fo.close()
+try:
+    from h5py import File as h5
+    fo = h5('./test.h5', 'w')
+    fo['ne'] = np.array(ne_, dtype=np.int32)
+    fo['n_rewire'] = n_rewire
+    fo.close()
+except ImportError:
+    pass
 
 #--- make fig
 fig = figure(1, figsize=(6,4))
@@ -112,10 +114,10 @@ ax.legend(loc='best')
 fig.savefig(pa.fname_fig,format='png',dpi=135,bbox_inches='tight')
 close()
 
-#--- save histogram
-hc, hx_ = np.histogram(ne_, bins=nbin)
-hx = hx_[1:]-hx_[:-1]
-do = np.array([hx,hc]).T
-np.savetxt('./hist.txt', do, fmt='%12.2f')
+##--- save histogram
+#hc, hx_ = np.histogram(ne_, bins=nbin)
+#hx = hx_[1:]-hx_[:-1]
+#do = np.array([hx,hc]).T
+#np.savetxt('./hist.txt', do, fmt='%12.2f')
 
 #EOF
