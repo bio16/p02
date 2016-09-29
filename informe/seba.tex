@@ -8,27 +8,27 @@
  
 \begin{figure}
 \centering
-\includegraphics[scale = 0.30]{figuras/AP-MS_b} 
-\includegraphics[scale = 0.30]{figuras/Y2H_b} \\
-\includegraphics[scale = 0.30]{figuras/LIT_b} 
-\includegraphics[scale = 0.30]{figuras/LIT_Reguly_b} 
+\includegraphics[scale = 0.3]{figuras/AP-MS_b} 
+\includegraphics[scale = 0.3]{figuras/Y2H_b} \\
+\includegraphics[scale = 0.3]{figuras/LIT_b} 
+\includegraphics[scale = 0.3]{figuras/LIT_Reguly_b} 
 \caption{Tamaño relativo de la componente conectada más grande a medida que se remueven los nodos ordenados con diferentes criterios de centralidad. Se incluye el impacto de remover las proteínas esenciales y remover nodos al azar. En todos los casos se puede observar que el impacto de remoción (caída del tamaño del fragmento conectado) es mucho más alto al utilizar un criterio de centralidad en comparación con la remoción de las esenciales, que en algunos casos, prácticamente coincide con la remoción al azar.}
 \label{fig:remocion}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[scale = 0.30]{figuras/AP-MS} 
-\includegraphics[scale = 0.30]{figuras/Y2H} \\
-\includegraphics[scale = 0.30]{figuras/LIT} 
-\includegraphics[scale = 0.30]{figuras/LIT_Reguly} 
+\includegraphics[scale = 0.3]{figuras/AP-MS} 
+\includegraphics[scale = 0.3]{figuras/Y2H} \\
+\includegraphics[scale = 0.3]{figuras/LIT} 
+\includegraphics[scale = 0.3]{figuras/LIT_Reguly} 
 \caption{Tamaño relativo de la componente conectada más grande a medida que se remueven los nodos ordenados con diferentes criterios de centralidad, en forma iterativa, es decir, se remueve el nodo más central en la configuración actual de la red. Se puede observar que el impacto de remoción es mayor que el de la figure \ref{fig:remocion}.}
 \label{fig:remocion_alternativo}
 \end{figure}
 
 \subsection{Remoción de nodos al azar.}
 
-\par En las figuras \ref{fig:remocion} y \ref{fig:remocion_alternativo}, la remción de nodos al azar no siguió ningún criterio particular. En esta sección estudiaremos el impacto de tomar nodos al azar no esenciales, pero cuya distribución de grado sea equivalente a la de los nodos esenciales presentes en la red. Tomaremos nuevamente el tamaño relativo de la componente más grande como impacto de remoción. Cabe recordar que un tamaño relativo menor implica un impacto de remoción mayor.
+\par En las figuras \ref{fig:remocion} y \ref{fig:remocion_alternativo}, la remoción de nodos al azar no siguió ningún criterio particular. En esta sección estudiaremos el impacto de tomar nodos al azar no esenciales, pero cuya distribución de grado sea equivalente a la de los nodos esenciales presentes en la red. Tomaremos nuevamente el tamaño relativo de la componente más grande como impacto de remoción. Cabe recordar que un tamaño relativo menor implica un impacto de remoción mayor.
 \par En la tabla \ref{table:remocion}, comparamos el impacto de remover los nodos esenciales con la remoción de nodos no esenciales, con distribución de grado equivalente. El criterio tomado consistió en, dado un nodo esencial, tomar uno no esencial con el grado más cercano posible.
 \begin{table}
 \centering

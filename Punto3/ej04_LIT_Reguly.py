@@ -49,8 +49,8 @@ print 'Nodos removidos:', len(essentials_in_graph)
 # Hago una lista con los grados de los esenciales
 degree_of_essentials = [vs.degree() for vs in graph.vs if vs['essential'] == 1]
 
-size_max_component = np.zeros(5)
-for conf in range(5):
+size_max_component = np.zeros(10)
+for conf in range(10):
 
   # Genero un diccionario de (proteina, grado original) con las 
   # no esenciales presentes en la red auxiliar, 
@@ -92,7 +92,7 @@ for conf in range(5):
   graph_aux2 = graph_aux.clusters()
   size_max_component[conf] = float(max(graph_aux2.sizes())) \
                          / size_of_large_connected_component
-  print conf
+  
     
 print np.mean(size_max_component), np.std(size_max_component)
 

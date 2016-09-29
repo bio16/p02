@@ -92,7 +92,7 @@ for conf in range(10):
   graph_aux2 = graph_aux.clusters()
   size_max_component[conf] = float(max(graph_aux2.sizes())) \
                          / size_of_large_connected_component
-  print conf
+
     
 print np.mean(size_max_component), np.std(size_max_component)
 
