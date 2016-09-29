@@ -6,7 +6,9 @@ Es dif\'icil identificar interacciones esenciales (PPIs) experimentalmente en la
 
 Aqu\'i usamos un m\'etodo computacional para evaluar la prevalecencia de enlaces esenciales PPIs y la contribuci\'on de PPIs esenciales a la esencialidad de genes al nivel gen\'omico.
 
-Nuestro an\'alisis se enfoca en las redes {\it LIT}, {\it LIT-Reguly}, y {\it Y2H}, excluyendo a la red {\it AP-MS}, como se hizo en la secci\'on anterior.
+Nuestro an\'alisis se enfoca en las redes {\it LIT} y {\it Y2H}.
+%, excluyendo a la red {\it AP-MS}, como se hizo en la secci\'on anterior. 
+%Tambi\'en excluimos a la red {\it LIT-Reguly} debido 
 
 Como se mencion\'o antes, dos prote\'inas que forman un enlace esencial PPI deben ser esenciales.
 Por el contrario, las interacciones entre prote\'inas esenciales (IBEPs, {\it Interaction Between Essential Proteins}, por sus siglas en ingl\'es) pueden o no ser esenciales, dado que la esencialidad de una prote\'ina puede deberse a otros factores adem\'as de las PPIs.
@@ -21,5 +23,18 @@ Siguiendo el m\'etodo de \cite{he2006}, determinamos la fracci\'on de interaccio
 Los valores para las diferentes redes se muestran en la tabla \ref{tab:probas}.
 
 
+%--- overlapping
+% NOTE: sacado de:
+% ./beta -- ...
+Notar que algunos nodos resultaron afectados por ambos factores; es decir por asignaci\'on random y por PPIs esenciales. 
+En particular, para el caso {\it Y2H} es del $22 \pm 6$ \%, y para {\it LIT} es del $7.10 \pm 3.04$.
+
+\begin{figure}
+\centering
+\includegraphics[scale = 0.6]{figuras/hist_LIT} 
+\includegraphics[scale = 0.6]{figuras/hist_Y2H} \\
+\caption{Distribuciones observadas del n\'umero de interacciones esenciales para los casos random de la redes estudiadas mediante simulaciones, para investigar las probabilidad $\alpha$ y $\beta$ de la red.}
+\label{fig:remocion_alternativo}
+\end{figure}
 
 %EO
