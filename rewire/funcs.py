@@ -139,8 +139,9 @@ def make_random_essential_nodes(g, N_e):
     """
     n_nodes = len(g.vs)
     __now__N_e = count_essential_nodes(graph=g)
-    assert N_e>=__now__N_e and 'essential' in g.vs.attributes(),\
-        " --> fallo chekeo ridiculo!!"
+    #assert N_e>=__now__N_e and 'essential' in g.vs.attributes(),\
+    #assert 'essential' in g.vs.attributes(),\
+    #    " --> falta flaggear nodos esenciales!!"
 
     if N_e == __now__N_e: # nada q hacer
         return 0
