@@ -9,7 +9,6 @@ import numpy as np
 from pylab import figure, close, show, find, bar, hist
 from h5py import File as h5
 import funcs as ff
-from numpy.random import normal as rand_norm # v.a. normal
 from numpy import nanmean, nanstd
 
 
@@ -54,45 +53,17 @@ with h5(pa.fname_inp_h5, 'r') as f:
 N_e  = ff.count_essential_nodes(fname_graph, fname_ess) # nodos esenciales
 N_ie = ff.calc_ne(g=graph, fname_ess=fname_ess)  # interacc esenciales
 
-nbad = 0  # nro de simulaciones "irreales"
+nbad = 0
 N_realiz = 10000 # nro de realizaciones
 beta     = ff.nans(N_realiz, dtype=np.float32)
 overlap  = ff.nans(N_realiz, dtype=np.float32)
 for ir in range(N_realiz):
-    # todos los enlaces no-esenciales por defecto
-    for id in range(n_edges):
-        graph.es[id]['essential'] = 0
-    # todos los nodos no-esenciales por defecto
-    for node_id in range(len(graph.vs)):
-        graph.vs[node_id]['essential'] = 0
-
-    # nro entero aleatorio con distrib normal, dado los 
-    # parametros de fiteo de la distribucion del nro de 
-    # interacc esenciales (IBEPs).
-    n_ie = int(rand_norm(loc=fit_mu,scale=fit_sigma)) #rn()
-
-    for i in range(N_ie-n_ie):
-        # asignar enlace esencial `i`
-        id = np.random.randint(n_edges) # sorteamos el enlace
-        graph.es[id]['essential'] = 1
-
-    # deducir y marcar los nodos esenciales q se generan por
-    # culpa de estos enlaces esenciales nuevos
-    ff.make_essential_nodes(graph)
-    # contemos el nro de nodos ess. agregados!
-    n_e = ff.count_essential_nodes(graph=graph) 
-    print(" -> falta completar %d nodos esenciales."%(N_e-n_e))
-    if N_e < n_e: # muy pocas veces, se supera el caso real
+    N_trials, N_overlap, n_e, n_ie = ff.beta_sorting(graph, N_e, N_ie, fit_mu, fit_sigma)
+    if N_trials==-1:
         print(" ----> FUCK, llenamos mas q en el caso real!\n \
                 Obviemos este caso.")
         nbad += 1
-        continue
 
-    # hacer intentos para atribuir nodos esenciales
-    # por causas random. Devuelve el nro total de intentos, y
-    # el nro de overlapping con el etiquetado anterior (por 
-    # distribuc de IBEPS).
-    N_trials, N_overlap = ff.make_random_essential_nodes(graph, N_e)
     # NOTE: notar q debe ser `N_trials >= N_e-n_e`, es decir,
     #       el nro de intentos sera igual o mayor q el nro de 
     #       nodos esenciales a completar, hasta llegar a 

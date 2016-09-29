@@ -28,5 +28,11 @@ A partir de estas realizaciones de red, se deduce un beta promedio (y su error),
 como tambien la fraccion de overlapping (por intentos de asignar esencialidad a nodos
 q ya eran esenciales).
 ```bash
-./beta.py -- 
+./beta.py -- -inp_txt ../data/yeast_LIT.txt -inp_h5 ./LIT.h5
+```
+
+---
+Para hacer las figuras de distribuciones y de sus ajustes:
+```bash
+./histos.py -- -inp_txt ../data/yeast_LIT.txt -inp_h5 LIT.h5 -fig hist_LIT.png
 ```
