@@ -1,4 +1,4 @@
-\begin{thebibliography}{9}
+\begin{thebibliography}{10}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -41,6 +41,17 @@ Ravi~S Kamath, Andrew~G Fraser, Yan Dong, Gino Poulin, Richard Durbin, Monica
 \newblock Systematic functional analysis of the caenorhabditis elegans genome
   using rnai.
 \newblock \emph{Nature}, 421\penalty0 (6920):\penalty0 231--237, 2003.
+
+\bibitem[Pereira-Leal et~al.(2005)Pereira-Leal, Audit, Peregrin-Alvarez, and
+  Ouzounis]{pereira05}
+José~B. Pereira-Leal, Benjamin Audit, José~M. Peregrin-Alvarez, and
+  Christos~A. Ouzounis.
+\newblock An exponential core in the heart of the yeast protein interaction
+  network.
+\newblock \emph{Molecular Biology and Evolution}, 22\penalty0 (3):\penalty0
+  421--425, 2005.
+\newblock \doi{10.1093/molbev/msi024}.
+\newblock URL \url{http://mbe.oxfordjournals.org/content/22/3/421.abstract}.
 
 \bibitem[Reguly et~al.(2006)Reguly, Breitkreutz, Boucher, Breitkreutz, Hon,
   Myers, Parsons, Friesen, Oughtred, Tong, et~al.]{lit_data}

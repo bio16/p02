@@ -9,4 +9,5 @@
 \contentsline {section}{\numberline {4}Hip\'otesis de interacciones esenciales~\citep {he2006}}{10}
 \contentsline {subsection}{\numberline {4.1}M\'etodo de Ajuste}{11}
 \contentsline {subsection}{\numberline {4.2}M\'etodo de simulaciones}{13}
-\contentsline {subsection}{\numberline {4.3}Discuci\'on}{14}
+\contentsline {subsection}{\numberline {4.3}Discuci\'on}{16}
+\contentsline {section}{\numberline {5}Conclusiones}{17}
