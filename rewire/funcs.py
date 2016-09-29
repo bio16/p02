@@ -15,6 +15,10 @@ M_PI = np.pi
 M_E  = np.e
 
 
+def nans(sh, dtype=np.float32):
+    return nan*ones(sh, dtype=dtype)
+
+
 def calc_ne(g=None, fname_ess=None):
     """
     calcula en nro total de interacciones `ne` (IBEPs) entre nodos
@@ -144,7 +148,7 @@ def make_random_essential_nodes(g, N_e):
     #    " --> falta flaggear nodos esenciales!!"
 
     if N_e == __now__N_e: # nada q hacer
-        return 0
+        return 0, 0
 
     n_fill = N_e - __now__N_e # nro de nodos efectivos a llenar
     N_trials, nok = 0, 0
@@ -160,7 +164,7 @@ def make_random_essential_nodes(g, N_e):
         N_trials += 1
 
 
-    return N_trials
+    return N_trials, N_trials-nok
 
 
 #EOF
