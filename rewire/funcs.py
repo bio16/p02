@@ -10,6 +10,8 @@ from numpy import (
 exp, sqrt, power, nan, array, ones, zeros
 )
 import igraph, os
+from numpy.random import normal as rand_norm # v.a. normal
+
 
 M_PI = np.pi
 M_E  = np.e
@@ -163,8 +165,48 @@ def make_random_essential_nodes(g, N_e):
         g.vs[node_id]['essential'] = 1
         N_trials += 1
 
-
     return N_trials, N_trials-nok
+
+def beta_sorting(graph, N_e, N_ie, fit_mu, fit_sigma):
+    """
+    rutina de sorteos para asignar esencialidad
+    por otros motivos (ademas de IBEPs).
+    """
+    n_edges = len(graph.es) # nro total de enlaces
+
+    # todos los enlaces no-esenciales por defecto
+    for id in range(n_edges):
+        graph.es[id]['essential'] = 0
+    # todos los nodos no-esenciales por defecto
+    for node_id in range(len(graph.vs)):
+        graph.vs[node_id]['essential'] = 0
+
+    # nro entero aleatorio con distrib normal, dado los 
+    # parametros de fiteo de la distribucion del nro de 
+    # interacc esenciales (IBEPs).
+    n_ie = int(rand_norm(loc=fit_mu,scale=fit_sigma)) #rn()
+
+    for i in range(N_ie-n_ie):
+        # asignar enlace esencial `i`
+        id = np.random.randint(n_edges) # sorteamos el enlace
+        graph.es[id]['essential'] = 1
+
+    # deducir y marcar los nodos esenciales q se generan por
+    # culpa de estos enlaces esenciales nuevos
+    make_essential_nodes(graph)
+    # contemos el nro de nodos ess. agregados!
+    n_e = count_essential_nodes(graph=graph) 
+    print(" -> falta completar %d nodos esenciales."%(N_e-n_e))
+    if N_e < n_e: # muy pocas veces, se supera el caso real
+        return -1, -1, -1, -1 # error flags
+
+    # hacer intentos para atribuir nodos esenciales
+    # por causas random. Devuelve el nro total de intentos, y
+    # el nro de overlapping con el etiquetado anterior (por 
+    # distribuc de IBEPS).
+    N_trials, N_overlap = make_random_essential_nodes(graph, N_e)
+
+    return N_trials, N_overlap, n_e, n_ie
 
 
 #EOF
