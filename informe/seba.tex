@@ -1,5 +1,5 @@
 
-\section{Impacto de remoción.}
+\subsection{Impacto de remoción.}
 
 \par En esta sección estudiamos el impacto de remover proteínas que son centrales bajo diferentes criterios y lo comparamos con el impacto de remover las proteíans catalogadas como esenciales. Según \cite{jeong2000}, un nodo con alto grado en la red de interacciones tiene más probabilidad de ser esencial que la esperada por azar, debido a que actúa de intermediario entre nodos de menor grado. Sin embargo, cabe la posibilidad de que no sea el número de vecinos inmediatos lo que determina la importancia de una proteína, sino algún otra propiedad topológica más global.
 \par En las figura \ref{fig:remocion} estudiamos cómo se modifica el tamaño relativo (al tamaño de la componente de la red original) de la componente más grande al remover los nodos catalogados como centrales según diferentes criterios, para las cuatro redes estudiadas. Comparamos estos resultados con el caso de remover las proteínas esenciales, y con remover nodos al azar sin más criterio. Los criterios utilizados fueron: grado del nodo, centralidad de betweenness, centralidad de Bonacich, y subgraph centrality. 
@@ -26,12 +26,14 @@
 \label{fig:remocion_alternativo}
 \end{figure}
 
-\subsection{Remoción de nodos al azar.}
+\subsubsection{Remoción de nodos al azar.}
 
 \par En las figuras \ref{fig:remocion} y \ref{fig:remocion_alternativo}, la remoción de nodos al azar no siguió ningún criterio particular. En esta sección estudiaremos el impacto de tomar nodos al azar no esenciales, pero cuya distribución de grado sea equivalente a la de los nodos esenciales presentes en la red. Tomaremos nuevamente el tamaño relativo de la componente más grande como impacto de remoción. Cabe recordar que un tamaño relativo menor implica un impacto de remoción mayor.
 \par En la tabla \ref{table:remocion}, comparamos el impacto de remover los nodos esenciales con la remoción de nodos no esenciales, con distribución de grado equivalente. El criterio tomado consistió en, dado un nodo esencial, tomar uno no esencial con el grado más cercano posible.
 \begin{table}
 \centering
+\caption{Tamaño relativo de la componente conectada más grande. Salvo en la red LIT, donde la remoción de nodos esenciales marca da una caída del tamaño más abrupta que la remoción al azar, en los otros casos, el impacto es equivalente.}
+\label{table:remocion}
 \begin{tabular}{c c c c}
 \hline \hline
 Red & Tr(Esenc.) & Tr(No Esenc.) & Nodos removidos \\
@@ -40,10 +42,8 @@ AP-MS & 0.32 & $0.38 \pm 0.02$ & 615 \\
 LIT & 0.276 & $0.417 \pm 0.003$ & 636 \\
 Y2H & 0.62 & $0.61 \pm 0.01$ & 459 \\
 LIT-Reguly & 0.568 & $0.536 \pm 0.005$ & 903 \\
-\hline
+\hline\hline
 \end{tabular}
-\caption{Tamaño relativo de la componente conectada más grande. Salvo en la red LIT, donde la remoción de nodos esenciales marca da una caída del tamaño más abrupta que la remoción al azar, en los otros casos, el impacto es equivalente.}
-\label{table:remocion}
 \end{table}
 \par De la tabla podemos concluir que salvo en la red LIT, el impacto de remoción es prácticamente el mismo que remover nodos no esenciales con la misma distribución de grado. Con lo cual la hipótesis de que la esencialidad de un nodo se debe a su grado queda descartada.
 
