@@ -7,6 +7,7 @@ import random
 import matplotlib.pyplot as plt
 import numpy as np
 from pylab import figure, close, show, find, bar, hist
+import funcs as ff
 
 
 #--- retrieve args
@@ -33,28 +34,6 @@ help='nro de re-cableados del grafo (manteniendo la distribucion de grado)',
 )
 pa = parser.parse_args()
 
-
-#--- algunas funciones para des-fragmentar el analisis
-def calc_ne(g=None, nn_list=None):
-    """
-    calcula en nro total de interacciones `ne` (IBEPs) entre nodos
-    esenciales, para una realizacion de red `g` dada.
-    """
-    #NOTE: la matriz de adyacencia me da la informacion
-    #      si esta o no conectado con cierto nodo
-    #A = g.get_adjacency()
-    # list de vecinos `nn_list[i]` para cada nodo `i`
-    nn_list = graph.get_adjlist()
-
-    ne = 0 # nro de interacc entre nodos esenciales
-    for vs in g.vs:
-        if vs['essential']: 
-            #neighbor_index = find(A[vs.index,:]) # indices de todos los vecinos de este esencial
-            neighbor_index = nn_list[vs.index]
-            for nn in neighbor_index: # contemos los vecinos q son esenciales
-                ne += g.vs[nn]['essential'] # >0 only for essential nodes
-
-    return ne
 
 # ------- Cargo la informacion del problema ------------- #
 
@@ -84,7 +63,7 @@ n_rewire, nbin = pa.n_rewire, pa.bins #1000, 45
 he = np.zeros(nbin, dtype=np.int64)
 ne_ = []
 for i in range(n_rewire):
-    ne = calc_ne(graph)
+    ne = ff.calc_ne(graph)
     print(" i, n_essential: ", i, ne)
     #he += np.histogram(ne, bins=nbin, range=[1500.,1900.], normed=False)[0]
     ne_ += [ ne ] # save all values
