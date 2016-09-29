@@ -15,6 +15,12 @@ parser = argparse.ArgumentParser(
 formatter_class=argparse.ArgumentDefaultsHelpFormatter
 )
 parser.add_argument(
+'-inp', '--fname_inp',
+type=str,
+default='../data/yeast_LIT.txt',
+help='input filename of the network/graph.',
+)
+parser.add_argument(
 '-fig', '--fname_fig',
 type=str,
 default='./test.png',
@@ -24,13 +30,20 @@ parser.add_argument(
 '-bin', '--bins',
 type=int,
 default=45,
-help='nuber of bins for histogram of IBEPs',
+help='number of bins for histogram of IBEPs',
 )
 parser.add_argument(
 '-nr', '--n_rewire',
 type=int,
 default=100,
 help='nro de re-cableados del grafo (manteniendo la distribucion de grado)',
+)
+parser.add_argument(
+'-out', '--fname_out',
+type=str,
+default='./test.h5',
+help='output filename, to save the sequence of the values\
+ of the number of essential interactions (IBEPs).',
 )
 pa = parser.parse_args()
 
@@ -39,7 +52,7 @@ pa = parser.parse_args()
 
 # Cargo en el objeto graph la red de dolphins.gml.
 #graph = igraph.read('dolphins.gml')
-graph = igraph.Graph.Read_Ncol('../data/yeast_LIT.txt', directed=False)
+graph = igraph.Graph.Read_Ncol(pa.fname_inp, directed=False)
 graph.simplify(multiple=True, loops=False)
 
 list_raw = open('../data/Essential_ORFs_paperHe.txt','r').readlines()[2:-4]
@@ -72,13 +85,20 @@ for i in range(n_rewire):
                                  # del nro total de nodos
 
 try:
+    # guarda toda la secuencia de nros de interacciones
+    # esenciales (IBEPs), para luego hacer histograma en la
+    # cantidad de bines q mejor se vea.
     from h5py import File as h5
-    fo = h5('./test.h5', 'w')
+    fo = h5(pa.fname_out, 'w')
     fo['ne'] = np.array(ne_, dtype=np.int32)
     fo['n_rewire'] = n_rewire
     fo.close()
 except ImportError:
-    pass
+    #--- guarda un histograma en ascii
+    hc, hx_ = np.histogram(ne_, bins=nbin)
+    hx = hx_[1:]-hx_[:-1]
+    do = np.array([hx,hc]).T
+    np.savetxt(pa.fname_out[:-3]+'.txt', do, fmt='%12.2f')
 
 #--- make fig
 fig = figure(1, figsize=(6,4))
@@ -92,11 +112,5 @@ ax.legend(loc='best')
 #show()
 fig.savefig(pa.fname_fig,format='png',dpi=135,bbox_inches='tight')
 close()
-
-##--- save histogram
-#hc, hx_ = np.histogram(ne_, bins=nbin)
-#hx = hx_[1:]-hx_[:-1]
-#do = np.array([hx,hc]).T
-#np.savetxt('./hist.txt', do, fmt='%12.2f')
 
 #EOF

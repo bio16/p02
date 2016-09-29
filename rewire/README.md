@@ -6,7 +6,7 @@ un recableado de enlaces, manteniendo su distribucion de grados Pk.
 Esto genera una secuencia de los valores del nro de interacciones esenciales,
 y los guarda en un archivo `./test.h5`.
 ```bash
-./alpha -- --fname_fig test.png --bins 50 --n_rewire 6000
+./alpha -- --bins 50 --n_rewire 6000 -fig ./LIT.png -inp ../data/yeast_LIT.txt -out ./LIT.h5
 ```
 Notar q si se usa `n_rewire` cerca a 10000, el histograma se hace raro. Tal vez
 se deba a q la generacion de nro aleatorio entra en un periodo de ciclo?
