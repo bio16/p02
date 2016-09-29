@@ -63,7 +63,7 @@ ax  = fig.add_subplot(111)
 
 ax.plot(hx, hc, '-ob', label='realizaciones')
 ax.plot(hx, ff.gauss(hx, 1., fit_mu, fit_sigma), '-r', lw=3, alpha=0.6, label='ajuste')
-ax.axvline(N_ie, ls='--', c='black', lw=2, label='real')
+ax.axvline(N_ie, ls='--', c='black', lw=3, label='real')
 
 ax.grid(True)
 ax.legend(loc='best')
