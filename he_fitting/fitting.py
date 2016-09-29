@@ -105,7 +105,7 @@ for k,tnodes,enodes in zip(degrees,hist,essential_hist):
 
 nbins = args.bins_number                    # Numero de bins pasado por argumentos
 if nbins == None:                           # si no
-    nbins = np.sqrt(max_degree)             # tomar nbins = sqrt(kmax)
+    nbins = np.sqrt(graph.num_vertices())             # tomar nbins = sqrt(kmax)
     
 # creamos una escala logaritmica para los bins
 log_bins = np.unique(np.ceil(np.logspace(0,np.log10(max_degree), nbins)))
@@ -120,7 +120,6 @@ for i in range(len(log_bins)-1):
     if kmax == max_degree :     # correccion si es el ultimo bin
         kmax += 1               # ^
     
-    print(max_degree,kmax)
     for k in range(kmin,kmax):
         log_hist[i] += all_degrees_hist[k]
         log_essential_hist[i] += all_degrees_essential_hist[k]
@@ -137,8 +136,10 @@ params = lin_model.guess(np.log(non_essential_probability_by_degree),x=log_bin_c
 result = lin_model.fit(np.log(non_essential_probability_by_degree),params,x=log_bin_centers)
 print(result.fit_report())
 print()
-print('alpha =', 1 - np.exp( result.params['slope'].value) )
-print('beta  =', 1 - np.exp( result.params['intercept'].value) )
+slope = result.params['slope']
+intercept = result.params['intercept']
+print('alpha =', 1 - np.exp( slope.value) ,'+-',np.abs(np.exp( slope.value )*slope.stderr ))
+print('beta  =', 1 - np.exp( intercept.value), '+-',np.abs(np.exp( intercept.value )*intercept.stderr ))
 print()
 
 
@@ -158,6 +159,7 @@ fig,subplot = plt.subplots(ncols=1,nrows=1)
 
 
 
+#subplot.plot(all_degrees,np.log(1 - all_degrees_essential_hist/all_degrees_hist),'o')
 color = args.data_color
 subplot.plot(log_bin_centers,np.log(non_essential_probability_by_degree),'o',
         color=color, label = 'data')
@@ -166,8 +168,6 @@ subplot.plot(log_bin_centers,np.log(non_essential_probability_by_degree),'o',
 xmin,xmax = subplot.get_xlim()   # para dibujar una linea de extremo a extremo
 x = np.linspace(xmin,xmax,10)
 y = lin(x,result.params['slope'].value,result.params['intercept'].value)
-for i,j in zip(x,y):
-    print(i,j)
 subplot.plot(x,y,'k--',label='fit')
 
 subplot.set_xlabel('$k$')

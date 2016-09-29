@@ -9,34 +9,53 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import kendalltau, spearmanr
 
-def essential_fraction(df,percent):
+plt.style.use(['seaborn-talk','seaborn-whitegrid'])
+fig,subplot = plt.subplots(ncols=1,nrows=1)
+
+# seccion de argumentos del programa
+argparser = arg.ArgumentParser(description='')
+argparser.add_argument('essentials',help='essential data')
+argparser.add_argument('files',help='graph file',nargs='+')
+argparser.add_argument('--percent-cut','-p',help='% hubs definition (default:0.2)',default=.2,type=float)
+args = argparser.parse_args()
+
+
+#definicion de funciones utiles
+def essential_fraction(df,percent,v_degrees, return_data_cut=False):
     """
     df: DataFrame con columnas 'degree', 'nodes', 'essentials'
     percent: float entre 0 y 1
+    v_degrees: lista de grado de cada nodo
 
     retorna 
         hub_frac: fraccion de hubs en la red dado el % de corte
         ess_frac: fraccion de esenciales-hub dado una definicion porcentual de hub
 
     """
-    kmax = df['degrees'].max(axis=0)
-    kcut = np.floor(kmax*percent)
+    sum_nodes = df['nodes'].sum(axis=0)             # numero total de nodos
+    ncut = int(np.floor((sum_nodes-1)*percent))     # numero de nodos 'hub' en el corte %
+    kcut = np.sort(v_degrees)[::-1][ncut]           # k del nodo de corte
+    
 
-    df_hub = df[df['degrees'] >= kcut]
+    df_hub = df[df['degrees'] >= kcut]              # tomamos solo los nodos con k >= kcut
 
-    sum_nodes = df['nodes'].sum(axis=0)
-    sum_hubs = df_hub['nodes'].sum(axis=0)
-    sum_essentials_hubs = df_hub['essentials'].sum(axis=0)
+    if return_data_cut:                             # Retornamos los histogramas y kcut si eso nos interesa
+        return df_hub['nodes'], df_hub['essentials'], kcut
 
-    hubs_frac = sum_hubs/sum_nodes
-    ess_frac = sum_essentials_hubs/sum_hubs
+    sum_hubs = df_hub['nodes'].sum(axis=0)                  # real numero de hubs dado kcut
+    sum_essentials_hubs = df_hub['essentials'].sum(axis=0)  # numero de esenciales dado un kcut
+
+    hubs_frac = sum_hubs/sum_nodes              # fraccion de hubs en la red
+    ess_frac = sum_essentials_hubs/sum_hubs     # fraccion de esenciales-hub en la red
+    
 
     return hubs_frac, ess_frac
 
-def essential_fraction_array(df,x):
+def essential_fraction_array(df,x,v_degrees):
     """
     df: DataFrame con columnas 'degree', 'nodes', 'essentials'
     x : array de porcentajes
+    v_degrees: lista de grado de cada nodo
 
     retorna 
         hub_arr: array de fraccion de hubs dado array de porcentajes
@@ -45,25 +64,13 @@ def essential_fraction_array(df,x):
     ess_arr = np.zeros_like(x)
     hub_arr = np.zeros_like(x)
     for i, percent in enumerate(x):
-        hub_arr[i], ess_arr[i] = essential_fraction(df,percent)
+        hub_arr[i], ess_arr[i] = essential_fraction(df,percent,v_degrees)
 
     return hub_arr,ess_arr
 
-plt.style.use(['seaborn-talk','seaborn-whitegrid'])
-fig,subplot = plt.subplots(ncols=1,nrows=1)
-
-# seccion de argumentos del programa
-argparser = arg.ArgumentParser(description='')
-argparser.add_argument('essentials',help='essential data')
-argparser.add_argument('files',help='graph file',nargs='+')
 
 
-#argparser.add_argument('--vertex-size','-s',help='set the vertex size (default:5)',default=5,type=float)
-
-
-args = argparser.parse_args()
-
-
+# importacion de nodos esenciales
 essentials = pd.read_csv(args.essentials, usecols = ['ORF_name'], comment='=',sep='\t',skipfooter=4,
         engine='python',squeeze=True)
 
@@ -75,10 +82,9 @@ for i,node in enumerate(essentials.values):
 
 
 
-#importa el grafos
-data = []
-names  = []
-for file in args.files:
+print("%25s: tau(pvalue)\trho(pvalue)\tkcut"%' ')
+for file in args.files:  #para cada red
+    # Crear grafo
     try:
         graph = load_graph(file,fmt='gml')
     except OSError:
@@ -86,8 +92,7 @@ for file in args.files:
                     csv_options={"delimiter": "\t", "quotechar": "#"})
 
 
-    name = file.split('/')[-1].split('.')[0]
-    names.append(name)
+    name = file.split('/')[-1].split('.')[0]        # nombre filtrado
 
     #primero marcamos los nodos escenciales
     new_prop = graph.new_vertex_property("bool")
@@ -112,18 +117,22 @@ for file in args.files:
         # el producto actua como operador "y"-logico: 1 si es escencial y de grado k
         essential_hist[i] = np.sum(  ( v_degrees == k )*essential_vertex )
 
-    data = pd.DataFrame({'degrees':degrees,'nodes':hist,'essentials':essential_hist}) 
+    data = pd.DataFrame({'degrees':degrees,'nodes':hist,'essentials':essential_hist}) # histogramas como funcion de k
 
-    percent = np.linspace(0,1,100)
-    x,y = essential_fraction_array(data,percent)
 
-    subplot.plot(x,y,'-',label=name)
+    percent = np.linspace(0,1,100)                          #  
+    x,y = essential_fraction_array(data,percent,v_degrees)  #
+    subplot.plot(x,y,'-',label=name)                        # 
 
-    
+
+
+    # Medicion de correlacion    
+    x,y ,kcut= essential_fraction(data,args.percent_cut,v_degrees,return_data_cut=True)
+
     tau, tp_value = kendalltau(x,y) 
     rho, rp_value = spearmanr(x,y)
 
-    print("%25s: %.2f(%g)   %.2f(%.2g)"%(name,tau,tp_value,rho,rp_value))
+    print("%25s: %.2f(%g)\t%.2f(%.2g)\t%3i"%(name,tau,tp_value,rho,rp_value,kcut))
 
 subplot.set_xlabel('Fraccion de hubs en la red')
 subplot.set_ylabel('Fraccion de hubs esenciales')
